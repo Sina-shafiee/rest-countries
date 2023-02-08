@@ -1,13 +1,18 @@
-import { useState } from 'react';
+export type DropDownProps = {
+  value: string;
+  handleSelectChange: (value: string) => void;
+};
 
-export const DropDown: React.FC = () => {
-  const [value, setValue] = useState('');
+export const DropDown: React.FC<DropDownProps> = ({
+  value,
+  handleSelectChange
+}) => {
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    handleSelectChange(event.target.value);
+  };
+
   return (
-    <select
-      className='select'
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    >
+    <select className='select' value={value} onChange={handleChange}>
       <option value=''>Filter by Region</option>
       <option value='Africa'>Africa</option>
       <option value='America'>America</option>

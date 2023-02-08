@@ -7,7 +7,7 @@ export const Header: React.FC<HeaderProps> = ({
 }: HeaderProps) => {
   // check src/styles/index.css file for custom className styles
   return (
-    <header className='header'>
+    <header className='header open'>
       <div className='container navbar'>
         <h1>Where in the world?</h1>
         <section className='flex items-center gap-2'>

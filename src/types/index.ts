@@ -7,6 +7,11 @@ export type Data = {
   capital: string[];
   population: number;
   region: string;
+  flags: {
+    alt: string;
+    png: string;
+    svg: string;
+  };
 };
 
 // useFetch hook return data type

@@ -34,7 +34,11 @@
   }
 
   .header {
-    @apply shadow-sm shadow-black dark:shadow-white bg-primary transition-all duration-300 dark:bg-secondary dark:text-primary;
+    @apply bg-primary transition-all duration-300 dark:bg-secondary dark:text-primary;
+  }
+
+  .header.open {
+    @apply sticky top-0 left-0  shadow-sm shadow-gray-500 dark:shadow-gray-500;
   }
 
   .navbar {
@@ -52,5 +56,14 @@
   }
   option {
     padding: 1rem;
+  }
+
+  .cardList {
+    @apply container py-8;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: auto;
+    gap: 1rem;
   }
 }
