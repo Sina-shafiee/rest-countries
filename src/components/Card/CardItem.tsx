@@ -8,17 +8,19 @@ export const CardItem: React.FC<CardItemProps> = ({
   region
 }) => {
   return (
-    <article className='shadow-sm rounded-lg overflow-hidden hover:shadow-lg duration-300 transition-all bg-primary dark:bg-secondary'>
-      <img
-        className='aspect-video w-full object-fill'
-        src={flags.png}
-        alt={flags.alt}
-      />
+    <article className='card'>
+      <div className='w-[100%] sm:w-[310px] sm:h-[180px]'>
+        <img
+          className='aspect-video w-full object-fill'
+          src={flags?.png}
+          alt={flags?.alt}
+        />
+      </div>
 
       <div className='p-7'>
-        <h2 className='text-lg font-bold'>{name.official ?? 'Unavailable'}</h2>
+        <h2 className='text-lg font-bold'>{name?.official ?? 'Unavailable'}</h2>
         <p className='mt-4'>
-          population: {population.toLocaleString('en-UK') ?? 0}
+          population: {population?.toLocaleString('en-UK') ?? 0}
         </p>
         <p>Region: {region ?? 'Unavailable'}</p>
         <p>capital: {capital ?? 'Unavailable'}</p>

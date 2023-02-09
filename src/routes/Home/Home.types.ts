@@ -1,10 +1,4 @@
-import { CountryData } from '../../types';
-
-export type CardListProps = {
-  data: Array<CountryData> | [];
-};
-
-export type CardItemProps = {
+export type Data = {
   name: {
     common: string;
     official: string;

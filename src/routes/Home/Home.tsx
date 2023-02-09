@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { useFetch } from '../hooks/useFetch';
-import { Data } from '../types';
+import { useFetch } from '../../hooks/useFetch';
 
-import { CardList, DropDown, SearchForm } from '../components';
+import { CardList, DropDown, SearchForm } from '../../components';
+import { Data } from './Home.types';
+import { CountryData } from '../../types';
 
 export const Home: React.FC = () => {
   const {
@@ -25,7 +26,7 @@ export const Home: React.FC = () => {
       console.log(countriesData);
 
       const temp = countriesData.map(
-        ({ name, capital, population, region, flags }: Data): Data => ({
+        ({ name, capital, population, region, flags }: CountryData): Data => ({
           name,
           flags,
           capital,

@@ -30,11 +30,11 @@
   }
 
   .main {
-    @apply bg-lightBg dark:text-primary dark:bg-darkBg min-h-screen transition-all duration-300;
+    @apply bg-lightBg dark:text-primary dark:bg-darkBg min-h-screen;
   }
 
   .header {
-    @apply bg-primary transition-all duration-300 dark:bg-secondary dark:text-primary;
+    @apply bg-primary dark:bg-secondary dark:text-primary;
   }
 
   .header.open {
@@ -59,11 +59,14 @@
   }
 
   .cardList {
-    @apply container py-8;
+    @apply container py-8 gap-4;
     display: grid;
     justify-items: center;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-template-rows: auto;
-    gap: 1rem;
+  }
+
+  .card {
+    @apply shadow-sm rounded-lg overflow-hidden hover:shadow-lg bg-primary dark:bg-secondary w-[90%] sm:w-[305px];
   }
 }

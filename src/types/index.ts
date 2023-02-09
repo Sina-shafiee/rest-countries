@@ -1,5 +1,5 @@
 // countries fetch data type
-export type Data = {
+export type CountryData = {
   name: {
     common: string;
     official: string;
@@ -16,7 +16,7 @@ export type Data = {
 
 // useFetch hook return data type
 export type FetchResponse = {
-  data: Array<Data> | null;
+  data: Array<CountryData> | null;
   loading: boolean;
   error: string | null;
 };

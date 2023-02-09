@@ -1,4 +1,4 @@
-import { Data } from '../../types';
+import { CountryData } from '../../types';
 import { CardListProps } from './Card.types';
 import { CardItem } from './CardItem';
 
@@ -12,7 +12,7 @@ export const CardList: React.FC<CardListProps> = ({ data }) => {
           population,
           region,
           flags
-        }: Data): React.ReactNode => (
+        }: CountryData): React.ReactNode => (
           <CardItem
             key={name.common}
             name={name}

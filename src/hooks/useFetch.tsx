@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Data, FetchResponse } from '../types';
+import { CountryData, FetchResponse } from '../types';
+
+import { pause } from '../utils/pause';
 
 export const useFetch = (url: string): FetchResponse => {
-  const [data, setData] = useState<Array<Data> | null>(null);
+  const [data, setData] = useState<Array<CountryData> | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -17,6 +19,9 @@ export const useFetch = (url: string): FetchResponse => {
       }
 
       const result = await response.json();
+      await pause(10);
+      console.log(result);
+
       setData(result);
     } catch (err: any) {
       setError(err.message);
