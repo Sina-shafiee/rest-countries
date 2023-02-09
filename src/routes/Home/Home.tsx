@@ -23,8 +23,6 @@ export const Home: React.FC = () => {
   // copying countries data
   useEffect(() => {
     if (countriesData) {
-      console.log(countriesData);
-
       const temp = countriesData.map(
         ({ name, capital, population, region, flags }: CountryData): Data => ({
           name,
@@ -38,8 +36,6 @@ export const Home: React.FC = () => {
       setCountriesDataCopy(temp);
     }
   }, [countriesData]);
-
-  console.log(loading, error, countriesDataCopy);
 
   // handling search input change
   const handleSearchTerm = (term: string): void => {
@@ -62,16 +58,24 @@ export const Home: React.FC = () => {
               return country.region.includes(selectValue);
             }
           })
-          .filter((country: Data): boolean => {
-            return country.name.official.toLowerCase().includes(searchTerm);
+          .filter(({ name }: CountryData): boolean => {
+            return name.official.toLowerCase().includes(searchTerm);
           })
-          .map(({ name, flags, capital, population, region }) => ({
-            name,
-            flags,
-            capital,
-            population,
-            region
-          }));
+          .map(
+            ({
+              name,
+              flags,
+              capital,
+              population,
+              region
+            }: CountryData): Data => ({
+              name,
+              flags,
+              capital,
+              population,
+              region
+            })
+          );
         setCountriesDataCopy(temp);
       }, 300);
     }
@@ -91,7 +95,7 @@ export const Home: React.FC = () => {
         <DropDown value={selectValue} handleSelectChange={handleSelectChange} />
       </section>
 
-      <CardList data={countriesDataCopy} />
+      <CardList data={countriesDataCopy} isLoading={loading} error={error} />
     </>
   );
 };

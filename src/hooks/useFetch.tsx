@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { CountryData, FetchResponse } from '../types';
 
-import { pause } from '../utils/pause';
+// import { pause } from '../utils/pause';
 
 export const useFetch = (url: string): FetchResponse => {
   const [data, setData] = useState<Array<CountryData> | null>(null);
@@ -19,8 +19,7 @@ export const useFetch = (url: string): FetchResponse => {
       }
 
       const result = await response.json();
-      await pause(10);
-      console.log(result);
+      // await pause(2000);
 
       setData(result);
     } catch (err: any) {

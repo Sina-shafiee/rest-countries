@@ -34,7 +34,7 @@
   }
 
   .header {
-    @apply bg-primary dark:bg-secondary dark:text-primary;
+    @apply bg-primary dark:bg-secondary dark:text-primary z-40;
   }
 
   .header.open {

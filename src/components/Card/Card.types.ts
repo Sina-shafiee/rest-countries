@@ -2,6 +2,8 @@ import { CountryData } from '../../types';
 
 export type CardListProps = {
   data: Array<CountryData> | [];
+  isLoading: boolean;
+  error: string | null;
 };
 
 export type CardItemProps = {
