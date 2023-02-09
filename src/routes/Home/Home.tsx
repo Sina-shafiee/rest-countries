@@ -87,7 +87,7 @@ export const Home: React.FC = () => {
   }, [selectValue, searchTerm]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <>
+    <main>
       <section className='container pt-8 gap-4 flex items-center justify-between flex-wrap'>
         <SearchForm
           searchTerm={searchTerm}
@@ -97,6 +97,6 @@ export const Home: React.FC = () => {
       </section>
 
       <CardList data={countriesDataCopy} isLoading={loading} error={error} />
-    </>
+    </main>
   );
 };

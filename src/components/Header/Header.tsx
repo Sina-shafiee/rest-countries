@@ -1,5 +1,6 @@
 import ThemeIcon from './ThemeIcon';
 import { HeaderProps } from './Header.types';
+import { Link } from 'react-router-dom';
 
 export const Header: React.FC<HeaderProps> = ({
   handleThemeChange,
@@ -9,7 +10,9 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className='header open'>
       <div className='container navbar'>
-        <h1>Where in the world?</h1>
+        <Link to='/'>
+          <h1>Where in the world?</h1>
+        </Link>
         <section className='flex items-center gap-2'>
           <button onClick={handleThemeChange}>
             <ThemeIcon darkMode={darkMode} />

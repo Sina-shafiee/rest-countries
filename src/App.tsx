@@ -41,7 +41,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/country/:id' element={<CountryDetails />} />
+        <Route path='/country/:name' element={<CountryDetails />} />
       </Routes>
     </Fragment>
   );
