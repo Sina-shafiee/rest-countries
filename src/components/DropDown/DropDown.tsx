@@ -1,7 +1,4 @@
-export type DropDownProps = {
-  value: string;
-  handleSelectChange: (value: string) => void;
-};
+import { DropDownProps } from './DropDown.types';
 
 export const DropDown: React.FC<DropDownProps> = ({
   value,
