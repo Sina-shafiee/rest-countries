@@ -71,4 +71,7 @@
   .card {
     @apply shadow-sm rounded-lg overflow-hidden hover:shadow-lg bg-primary dark:bg-secondary w-[90%] sm:w-[305px];
   }
+  .Detail {
+    @apply container grid grid-cols-1 gap-12 md:gap-14 lg:gap-24 lg:grid-cols-2;
+  }
 }

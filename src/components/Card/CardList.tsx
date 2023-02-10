@@ -1,4 +1,4 @@
-import { CountryData } from '../../types';
+import { CardsData } from '../../types';
 import { Skeleton } from '../Skeleton/Skeleton';
 import { CardListProps } from './Card.types';
 import { CardItem } from './CardItem';
@@ -32,24 +32,28 @@ export const CardList: React.FC<CardListProps> = ({
 
   return (
     <section className='cardList'>
-      {data?.map(
-        ({
-          name,
-          capital,
-          population,
-          region,
-          flags
-        }: CountryData): React.ReactNode => (
-          <CardItem
-            key={name.common}
-            name={name}
-            capital={capital}
-            population={population}
-            region={region}
-            flags={flags}
-          />
-        )
-      )}
+      {data.length
+        ? data?.map(
+            ({
+              name,
+              capital,
+              population,
+              region,
+              flags,
+              cioc
+            }: CardsData): React.ReactNode => (
+              <CardItem
+                key={`${cioc}${Math.random() * 1000}`}
+                name={name}
+                capital={capital}
+                population={population}
+                region={region}
+                flags={flags}
+                cioc={cioc}
+              />
+            )
+          )
+        : null}
     </section>
   );
 };

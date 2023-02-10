@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { CountryDetails, Home } from './routes';
 import { Header } from './components';
+import ScrollToTop from './utils/ScrollToTop';
 
 const DARK_MODE_STORAGE_KEY = 'theme';
 const DARK_MODE_STORAGE_VALUE_DARK = 'dark';
@@ -40,6 +41,7 @@ function App() {
       <Header darkMode={darkMode} handleThemeChange={changeTheme} />
 
       <Routes>
+        <ScrollToTop />
         <Route path='/' element={<Home />} />
         <Route path='/country/:name' element={<CountryDetails />} />
       </Routes>

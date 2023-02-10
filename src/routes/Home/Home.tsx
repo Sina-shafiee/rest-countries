@@ -4,18 +4,17 @@ import { useFetch } from '../../hooks/useFetch';
 
 import { CardList, DropDown, SearchForm } from '../../components';
 
-import { Data } from './Home.types';
-import { CountryData } from '../../types';
+import { CountryData, CardsData } from '../../types';
 
 export const Home: React.FC = () => {
   const {
     data: countriesData,
     loading,
     error
-  } = useFetch('https://restcountries.com/v3.1/all');
+  } = useFetch('https://restcountries.com/v2/all');
 
   // countries data copy state
-  const [countriesDataCopy, setCountriesDataCopy] = useState<Data[]>([]);
+  const [countriesDataCopy, setCountriesDataCopy] = useState<CardsData[]>([]);
   // search input state
   const [searchTerm, setSearchTerm] = useState('');
   // select value
@@ -25,11 +24,19 @@ export const Home: React.FC = () => {
   useEffect(() => {
     if (countriesData) {
       const temp = countriesData.map(
-        ({ name, capital, population, region, flags }: CountryData): Data => ({
+        ({
+          name,
+          capital,
+          population,
+          region,
+          flags,
+          cioc
+        }: CountryData): CardsData => ({
           name,
           flags,
           capital,
           population,
+          cioc,
           region
         })
       );
@@ -52,7 +59,7 @@ export const Home: React.FC = () => {
     if (countriesData) {
       timeOut = setTimeout(() => {
         const temp = countriesData
-          ?.filter((country: Data): Data | boolean => {
+          ?.filter((country: CountryData): CardsData | boolean => {
             if (selectValue === '') {
               return country;
             } else {
@@ -60,7 +67,7 @@ export const Home: React.FC = () => {
             }
           })
           .filter(({ name }: CountryData): boolean => {
-            return name.official.toLowerCase().includes(searchTerm);
+            return name.toLowerCase().includes(searchTerm);
           })
           .map(
             ({
@@ -68,13 +75,15 @@ export const Home: React.FC = () => {
               flags,
               capital,
               population,
-              region
-            }: CountryData): Data => ({
+              region,
+              cioc
+            }: CountryData): CardsData => ({
               name,
               flags,
               capital,
               population,
-              region
+              region,
+              cioc
             })
           );
         setCountriesDataCopy(temp);

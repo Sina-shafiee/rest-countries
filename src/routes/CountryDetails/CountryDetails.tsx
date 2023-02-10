@@ -7,12 +7,10 @@ import { ArrowLeft } from './icons';
 export const CountryDetails = () => {
   const { name } = useParams();
   const { data, loading, error } = useFetch(
-    `https://restcountries.com/v3.1/name/${name
+    `https://restcountries.com/v2/name/${name
       ?.split('-')
       .join(' ')}?fullText=true`
   );
-
-  console.log(data);
 
   return (
     <main>
