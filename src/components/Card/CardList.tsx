@@ -31,36 +31,38 @@ export const CardList: React.FC<CardListProps> = ({
     );
   }
 
+  if (!data.length) {
+    return (
+      <div className='flex items-center justify-center min-h-[60vh]'>
+        <p> Sorry! No Countries Found..</p>
+      </div>
+    );
+  }
+
   return (
     <Fragment>
-      {data.length ? (
-        <section className='cardList'>
-          {data?.map(
-            ({
-              name,
-              capital,
-              population,
-              region,
-              flags,
-              cioc
-            }: CardsData): React.ReactNode => (
-              <CardItem
-                key={`${cioc}${Math.random() * 1000}`}
-                name={name}
-                capital={capital}
-                population={population}
-                region={region}
-                flags={flags}
-                cioc={cioc}
-              />
-            )
-          )}
-        </section>
-      ) : (
-        <div className='flex items-center justify-center min-h-[60vh]'>
-          <p> Sorry! No Countries Found..</p>
-        </div>
-      )}
+      <section className='cardList'>
+        {data?.map(
+          ({
+            name,
+            capital,
+            population,
+            region,
+            flags,
+            cioc
+          }: CardsData): React.ReactNode => (
+            <CardItem
+              key={`${cioc}${Math.random() * 1000}`}
+              name={name}
+              capital={capital}
+              population={population}
+              region={region}
+              flags={flags}
+              cioc={cioc}
+            />
+          )
+        )}
+      </section>
     </Fragment>
   );
 };
