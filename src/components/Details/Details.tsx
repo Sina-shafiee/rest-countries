@@ -26,24 +26,24 @@ export const Details: React.FC<DetailsProps> = ({ data, error, isLoading }) => {
 
             <section className='flex mt-8 font-normal gap-14 w-full'>
               <section className='space-y-2'>
-                <p>
+                <p className='info'>
                   <strong>Native Name:</strong>
                   {'  ' + data[0]?.nativeName ?? 'Not found'}
                 </p>
-                <p>
+                <p className='info'>
                   <strong>Population:</strong>
                   {'  ' + data[0]?.population.toLocaleString('en-UK') ??
                     'Not found'}
                 </p>
-                <p>
+                <p className='info'>
                   <strong>Region:</strong>
                   {'  ' + data[0]?.region ?? 'Not found'}
                 </p>
-                <p>
+                <p className='info'>
                   <strong>Sub Region:</strong>
                   {'  ' + data[0]?.subregion ?? 'Not found'}
                 </p>
-                <p>
+                <p className='info'>
                   <strong>Capital:</strong>
                   {'  ' + data[0]?.capital ?? 'Not found'}
                 </p>
@@ -60,7 +60,7 @@ export const Details: React.FC<DetailsProps> = ({ data, error, isLoading }) => {
                 </p>
                 <p>
                   <strong>languages:</strong>
-                  {'  ' + data[0]?.languages?.map((lang) => lang.name) ??
+                  {'  ' + data[0]?.languages?.map((lang) => ' ' + lang.name) ??
                     'Not found'}
                 </p>
               </section>

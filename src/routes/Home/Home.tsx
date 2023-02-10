@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 import { useFetch } from '../../hooks/useFetch';
-
 import { CardList, DropDown, SearchForm } from '../../components';
-
 import { CountryData, CardsData } from '../../types';
 
 export const Home: React.FC = () => {
@@ -20,31 +18,6 @@ export const Home: React.FC = () => {
   // select value
   const [selectValue, setSelectValue] = useState('');
 
-  // copying countries data
-  useEffect(() => {
-    if (countriesData) {
-      const temp = countriesData.map(
-        ({
-          name,
-          capital,
-          population,
-          region,
-          flags,
-          cioc
-        }: CountryData): CardsData => ({
-          name,
-          flags,
-          capital,
-          population,
-          cioc,
-          region
-        })
-      );
-
-      setCountriesDataCopy(temp);
-    }
-  }, [countriesData]);
-
   // handling search input change
   const handleSearchTerm = (term: string): void => {
     setSearchTerm(term);
@@ -54,46 +27,42 @@ export const Home: React.FC = () => {
     setSelectValue(value);
   };
 
-  useEffect(() => {
-    let timeOut: NodeJS.Timeout;
-    if (countriesData) {
-      timeOut = setTimeout(() => {
-        const temp = countriesData
-          ?.filter((country: CountryData): CardsData | boolean => {
-            if (selectValue === '') {
-              return country;
-            } else {
-              return country.region.includes(selectValue);
-            }
-          })
-          .filter(({ name }: CountryData): boolean => {
-            return name.toLowerCase().includes(searchTerm);
-          })
-          .map(
-            ({
-              name,
-              flags,
-              capital,
-              population,
-              region,
-              cioc
-            }: CountryData): CardsData => ({
-              name,
-              flags,
-              capital,
-              population,
-              region,
-              cioc
-            })
-          );
-        setCountriesDataCopy(temp);
-      }, 300);
-    }
+  const temp = useMemo(() => {
+    if (!countriesData) return [];
 
-    return () => {
-      clearTimeout(timeOut);
-    };
-  }, [selectValue, searchTerm]); // eslint-disable-line react-hooks/exhaustive-deps
+    return countriesData
+      .filter((country: CountryData) => {
+        if (selectValue === '') {
+          return country;
+        } else {
+          return country.region.includes(selectValue);
+        }
+      })
+      .filter(({ name }: CountryData) => {
+        return name.toLowerCase().includes(searchTerm);
+      })
+      .map(
+        ({
+          name,
+          flags,
+          capital,
+          population,
+          region,
+          cioc
+        }: CountryData): CardsData => ({
+          name,
+          flags,
+          capital,
+          population,
+          region,
+          cioc
+        })
+      );
+  }, [countriesData, selectValue, searchTerm]);
+
+  useEffect(() => {
+    setCountriesDataCopy(temp);
+  }, [temp]);
 
   return (
     <main>

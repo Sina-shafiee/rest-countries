@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { CardsData } from '../../types';
 import { Skeleton } from '../Skeleton/Skeleton';
 import { CardListProps } from './Card.types';
@@ -31,9 +32,10 @@ export const CardList: React.FC<CardListProps> = ({
   }
 
   return (
-    <section className='cardList'>
-      {data.length
-        ? data?.map(
+    <Fragment>
+      {data.length ? (
+        <section className='cardList'>
+          {data?.map(
             ({
               name,
               capital,
@@ -52,8 +54,13 @@ export const CardList: React.FC<CardListProps> = ({
                 cioc={cioc}
               />
             )
-          )
-        : null}
-    </section>
+          )}
+        </section>
+      ) : (
+        <div className='flex items-center justify-center min-h-[60vh]'>
+          <p> Sorry! No Countries Found..</p>
+        </div>
+      )}
+    </Fragment>
   );
 };
