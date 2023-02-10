@@ -42,3 +42,8 @@ export type FetchResponse = {
   loading: boolean;
   error: string | null;
 };
+
+// icon props types
+export type IconProps = {
+  classNames: string;
+};

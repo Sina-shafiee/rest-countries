@@ -1,4 +1,4 @@
-import { IconProps } from './index.types';
+import { IconProps } from '../../../types';
 
 export const LightIcon: React.FC<IconProps> = (props) => {
   return (

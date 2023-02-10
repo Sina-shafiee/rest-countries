@@ -40,8 +40,8 @@ function App() {
     <Fragment>
       <Header darkMode={darkMode} handleThemeChange={changeTheme} />
 
+      <ScrollToTop />
       <Routes>
-        <ScrollToTop />
         <Route path='/' element={<Home />} />
         <Route path='/country/:name' element={<CountryDetails />} />
       </Routes>
