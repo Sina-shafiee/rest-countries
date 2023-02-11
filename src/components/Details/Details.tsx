@@ -1,3 +1,4 @@
+import { Borders } from '../Borders/Borders';
 import { DetailsProps } from './Details.types';
 
 export const Details: React.FC<DetailsProps> = ({ data, error, isLoading }) => {
@@ -24,7 +25,7 @@ export const Details: React.FC<DetailsProps> = ({ data, error, isLoading }) => {
           <section className='w-full mt-4'>
             <h2 className='text-2xl font-extrabold'>{data[0]?.name}</h2>
 
-            <section className='flex mt-8 font-normal gap-14 w-full'>
+            <section className='flex py-8 font-normal gap-4 sm:justify-between md:gap-10 md:justify-start xl:gap-14 w-full flex-wrap xl:flex-nowrap'>
               <section className='space-y-2'>
                 <p className='info'>
                   <strong>Native Name:</strong>
@@ -65,6 +66,7 @@ export const Details: React.FC<DetailsProps> = ({ data, error, isLoading }) => {
                 </p>
               </section>
             </section>
+            {data[0].borders ? <Borders borders={data[0]?.borders} /> : null}
           </section>
         </>
       ) : null}

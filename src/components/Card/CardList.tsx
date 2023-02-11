@@ -14,7 +14,7 @@ export const CardList: React.FC<CardListProps> = ({
       <section className='cardList'>
         {Array(8)
           .fill(0)
-          .map((_, index) => {
+          .map((_, index: number): React.ReactNode => {
             return (
               <Skeleton classNames='w-full h-[360px] rounded-lg' key={index} />
             );

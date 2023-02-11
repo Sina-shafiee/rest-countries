@@ -40,7 +40,7 @@
   }
 
   .header.open {
-    @apply sticky top-0 left-0  shadow-sm shadow-gray-500 dark:shadow-gray-500 transition-all duration-500;
+    @apply sticky top-0 left-0;
   }
 
   .navbar {
@@ -73,9 +73,6 @@
   }
   .Detail {
     @apply container grid grid-cols-1 gap-12 md:gap-14 lg:gap-24 lg:grid-cols-2;
-  }
-  .info {
-    @apply whitespace-nowrap;
   }
 }
 
