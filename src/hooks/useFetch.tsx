@@ -4,9 +4,9 @@ import { CountryData, FetchResponse } from '../types';
 // import { pause } from '../utils/pause';
 
 export const useFetch = (url: string): FetchResponse => {
-  const [data, setData] = useState<Array<CountryData> | null>(null);
+  const [data, setData] = useState<CountryData[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
     setLoading(true);

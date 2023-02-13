@@ -3,11 +3,19 @@ import { DetailsProps } from './Details.types';
 
 export const Details: React.FC<DetailsProps> = ({ data, error, isLoading }) => {
   if (isLoading) {
-    return <p>Loading</p>;
+    return (
+      <div className='min-h-[60vh] flex items-center justify-center'>
+        <p>Loading</p>
+      </div>
+    );
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return (
+      <div className='min-h-[60vh] flex items-center justify-center'>
+        <p>{error}</p>
+      </div>
+    );
   }
 
   return (

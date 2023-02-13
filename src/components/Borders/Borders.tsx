@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
 import { BordersProps } from './Borders.types';
 
@@ -19,9 +20,11 @@ export const Borders: React.FC<BordersProps> = ({ borders }) => {
         <strong className='whitespace-nowrap'>Borders Countries: </strong>{' '}
         <div className='flex gap-2 flex-wrap text-sm'>
           {data?.map((country) => (
-            <span className='btn btn-primary px-3 py-1' key={country.cioc}>
-              {country.name + ' '}
-            </span>
+            <Link to={`/country/${country.name.split(' ').join('-')}`}>
+              <span className='btn btn-primary px-3 py-1' key={country.cioc}>
+                {country.name + ' '}
+              </span>
+            </Link>
           ))}
         </div>
       </section>

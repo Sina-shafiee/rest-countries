@@ -6,6 +6,7 @@ import { ArrowLeft } from './icons';
 
 export const CountryDetails = () => {
   const { name } = useParams();
+
   const { data, loading, error } = useFetch(
     `https://restcountries.com/v2/name/${name
       ?.split('-')
